@@ -1,0 +1,40 @@
+body{
+    background-image: url(./books.jpeg);
+}
+
+#allBooksContainer {
+    height: 32vh;
+    overflow-y: auto;
+}
+
+#stats {
+    height: 32vh;
+    overflow-y: auto;
+}
+
+#stats>div>h2 {
+    font-size: larger;
+    margin: 3vh 0 6vh 0;
+}
+
+li {
+    font-size: large;
+}
+
+header {
+    margin-bottom: 10vh;
+    padding-bottom: 10px;
+    background-color: rgba(196, 195, 154, 0.8);
+    border-radius: 20px;
+    display: flex;
+}
+
+main > div{
+    background-color: rgba(196, 195, 154, 0.8);
+    border-radius: 20px;
+}
+
+.btn{
+    color: black;
+}
+

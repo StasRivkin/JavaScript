@@ -16,14 +16,24 @@ function clearStats() {
 }
 
 function toStats() {
-        const divStats = document.createElement('div');
-        const amount = createInfoElement(library.booksIn(), 'h2');
-        const old = createInfoElement(library.oldestIn(), 'h2');
-        const young = createInfoElement(library.youngestIn(), 'h2');
-        divStats.append(amount, old, young);
-        if (stats.firstElementChild) {
-            stats.replaceChild(divStats, stats.firstElementChild.nextElementSibling);
-        } else {
-            stats.appendChild(divStats);
-        }
+    const divStats = document.createElement('div');
+    const amount = createInfoElement(library.booksIn(), 'h2');
+    const old = createInfoElement(library.oldestIn(), 'h2');
+    const young = createInfoElement(library.youngestIn(), 'h2');
+    divStats.append(amount, old, young);
+    if (stats.firstElementChild) {
+        stats.replaceChild(divStats, stats.firstElementChild.nextElementSibling);
+    } else {
+        stats.appendChild(divStats);
+    }
+}
+
+function toCollor() {
+    const main = document.querySelector('main');
+    if (library._books.length === 0) {
+        main.style.visibility = "hidden";
+    }
+    else{
+        main.style.visibility = "visible";
+    }
 }

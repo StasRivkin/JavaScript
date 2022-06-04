@@ -19,12 +19,16 @@ class Library {
                 if (library._books.length !== 0) {
                    toStats();
                 }
+                else{
+                    toCollor();
+                }
             };
             li.append(buttonDel);
             allBooks.append(li);
             allValues();
             clearStats();
             toStats();
+            toCollor();
         }
         else {
             return alert(`Book with isbn = ${book.isbn} exists`);
