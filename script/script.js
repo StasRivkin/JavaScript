@@ -1,12 +1,11 @@
-const company = new Company;
+const library = new Library;
 
-addPerson.onclick = function () {
-    const person = new Employee(personId.value.trim(), firstName.value.trim(), lastName.value.trim(), age.value, salary.value);
-    company.addEmployee(person);
-    
-};
-
-calcStats.onclick = company.static();
-
-
-
+addBook.onclick = function(){
+    if(isbn.value && title.value && author.value && year.value){
+    const book = new Book(isbn.value.trim(), title.value.trim(), author.value.trim(), year.value);
+    library.addBook(book);
+    }
+    else{
+        alert('all fields must be filled');
+    }  
+}
