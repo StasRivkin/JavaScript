@@ -1,34 +1,23 @@
-const willWeGetAnswer = function () {
-    return new Promise(function (resolve, reject) {
-        setTimeout(function () {
-            const isEddAngry = Math.random() > 0.5;
-            if (isEddAngry) {
-                const ignore = new Error(';)');
-                reject(ignore);
-            } else {
-                const answer = {
-                    code: "I'm happy",
-                    smile: ':)',
-                }
-                resolve(answer);
+sendPostId.onclick = e => {
+    fetch(`https://jsonplaceholder.typicode.com/posts/${postId.value}`)
+        .then(responce => {
+            if (responce.ok) {
+                return responce.json();
             }
-        }, 1000);
-    });
-};
+            else {
+                throw new Error(responce.status);
+            }
+        })
+        .then(data => {
+            const h1 = document.createElement('h1');
+            h1.appendChild(document.createTextNode(`Id : ${data.id} Title : ${data.title}`));
+            document.body.appendChild(h1);
+        })
+        .catch(e => {
+            console.log(e);
+            const h1 = document.createElement('h1');
+            h1.appendChild(document.createTextNode(`Ooops 404`));
+            document.body.appendChild(h1);
+        })
+}
 
-willWeGetAnswer()
-    .then(result => result.code)
-    .then(code => {
-        console.log(code);
-        return willWeGetAnswer();
-    })
-    .then(result => result.code)
-    .then(code => {
-        console.log(code);
-        return willWeGetAnswer();
-    })
-    .then(result => result.code)
-    .then(code => console.log(code))
-    .catch(error => {
-        console.log(error.message);
-    })
