@@ -1,23 +1,53 @@
-sendPostId.onclick = e => {
-    fetch(`https://jsonplaceholder.typicode.com/posts/${postId.value}`)
+const accessKey = '?access_key=c6b106dc52ff88c18e0d9611a1b5c347';
+let rates;
+let value;
+
+//использовал онклик для кнопки старт что бы не исчерпать возможные попытки обращения к серверу, при удвлении 6 и 25 строки будет работать при загрузке страницы.
+start.onclick = e => {
+    fetch('http://data.fixer.io/api/latest' + accessKey)
         .then(responce => {
-            if (responce.ok) {
-                return responce.json();
-            }
-            else {
-                throw new Error(responce.status);
-            }
+            rates = responce.json();
+            return rates;
         })
-        .then(data => {
-            const h1 = document.createElement('h1');
-            h1.appendChild(document.createTextNode(`Id : ${data.id} Title : ${data.title}`));
-            document.body.appendChild(h1);
+        .then(responce => {
+            responce = responce.rates;
+            const { ...obj } = responce;
+            const curRates = Object.keys(responce).toString();
+            const curValues = Object.values(responce).toString();
+            rates = curRates.split(',');
+            value = curValues.split(',');
+            return rates;
         })
-        .catch(e => {
-            console.log(e);
-            const h1 = document.createElement('h1');
-            h1.appendChild(document.createTextNode(`Ooops 404`));
-            document.body.appendChild(h1);
+        .then( () => {
+            addRates();
         })
+        .catch(e => console.log(e))
+}
+
+
+convert.onclick = e => {
+    const fromInd = rates.indexOf(from.value);
+    const toInd = rates.indexOf(to.value);
+    let res = (value[toInd] / value[fromInd]) * sum.value;
+    if(result.hasChildNodes()){
+        result.removeChild(result.childNodes[0]); 
+        result.append(`Exchange rate: ${sum.value} ${from.value} is ${res} ${to.value}`);
+    }
+    else{
+        result.append(`Exchange rate: ${sum.value} ${from.value} is ${res} ${to.value}`);  
+    }
+}
+
+function addRates() {
+    rates.forEach(e => {
+        const element = document.createElement('option');
+        element.append(e);
+        from.append(element);
+    });
+    rates.forEach(e => {
+        const element = document.createElement('option');
+        element.append(e);
+        to.append(element);
+    });
 }
 

@@ -4,12 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homework</title>
+    <title>homework</title>
     <script src="./script/script.js" defer></script>
 </head>
 <body>
-    <label for="postId">Post ID</label>
-    <input type="number" min="0" max="100" id="postId">
-    <button id="sendPostId">Send</button>
+    <h1>Exchange rates</h1>
+    <label for="from">From :</label>
+    <select name="select" id="from" size="1">
+    </select>
+    <br/>
+    <label for="to">To :</label>
+    <select name="select" id="to" size="1">
+    </select>
+    <br/>
+    <label for="sum">Sum :</label>
+    <input type="number" id="sum">
+    <br/>
+    <button id="convert">Convert</button>
+    <button id="start">Start</button>
+    <div id="result"></div>
 </body>
 </html>
