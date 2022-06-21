@@ -3,6 +3,7 @@ let rates;
 let value;
 
 //использовал онклик для кнопки старт что бы не исчерпать возможные попытки обращения к серверу, при удвлении 6 и 25 строки будет работать при загрузке страницы.
+start.onclick = e => {
     fetch('http://data.fixer.io/api/latest' + accessKey)
         .then(responce => {
             rates = responce.json();
@@ -21,8 +22,7 @@ let value;
             addRates();
         })
         .catch(e => console.log(e))
-
-
+}
 
 convert.onclick = e => {
     const fromInd = rates.indexOf(from.value);
