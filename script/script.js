@@ -31,10 +31,10 @@ convert.onclick = e => {
     let res = (value[toInd] / value[fromInd]) * sum.value;
     if(result.hasChildNodes()){
         result.removeChild(result.childNodes[0]); 
-        result.append(`Exchange rate: ${sum.value} ${from.value} is ${res} ${to.value}`);
+        result.append(`Exchange rate: ${sum.value} ${from.value} is ${res.toFixed(2)} ${to.value}`);
     }
     else{
-        result.append(`Exchange rate: ${sum.value} ${from.value} is ${res} ${to.value}`);  
+        result.append(`Exchange rate: ${sum.value} ${from.value} is ${res.toFixed(2)} ${to.value}`);  
     }
 }
 
