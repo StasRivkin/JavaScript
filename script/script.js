@@ -24,7 +24,6 @@ start.onclick = e => {
         .catch(e => console.log(e))
 }
 
-
 convert.onclick = e => {
     const fromInd = rates.indexOf(from.value);
     const toInd = rates.indexOf(to.value);
